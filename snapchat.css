@@ -1,0 +1,61 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #fff;
+}
+
+.snapBody img {
+    margin-left: 25%;
+    width: 50%; /* Adjust as needed */
+    object-fit: contain; /* Maintain aspect ratio */
+}
+
+#footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 50%;
+    font-size: x-large;
+}
+
+.backbutton {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.backbutton button {
+    background-color: rgba(199, 28, 28, 0.8);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 1em 10em;
+    border-radius: 10px;
+}
+
+.backbutton button:hover {
+    background-color: rgba(54, 52, 52, 0.9);
+}
+
+@media (min-width: 768px) {
+    .snapBody img {
+        width: 50%; /* Adjust as needed */
+    }
+    
+    .backbutton button {
+        padding: 1em 2em;
+    }
+}

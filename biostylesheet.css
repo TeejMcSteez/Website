@@ -1,0 +1,126 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Futura Std Condensed Light;;
+    position: relative;
+    background-color: none;
+}
+
+#biopic {
+    position: fixed; /* Using fixed so it doesn't interfere with natural document flow */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-height: 100%;
+    min-width: 100%;
+    height: 50vh;
+    width: 50vh;
+    z-index: -1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.content {
+    z-index: 10;
+    text-align: center;
+    padding-top: 20px; /* Give some spacing at the top */
+    margin-left:4%;
+    width: 90%;  /* Default width for mobile */
+    opacity: 0;  /* Start with invisible content */
+    animation: fadeIn 1s forwards .5s;  /* Apply our fade-in animation */
+}
+
+.bioBody {
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 30px 30px;
+    border-radius: 10px 20px;
+    font-size:larger;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 30px; /* Give some space at the bottom for the back button */
+}
+
+.backbutton {
+    margin-top: 20px;
+    font-size: 20px;
+    text-align: center;
+    
+}
+
+.backbutton button {
+    width: 80%;
+    margin-top: 2%;
+    background-color: rgba(199, 28, 28, 0.8);
+    padding: .5em 1em;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s; /* fixed typo */
+}
+
+.backbutton button:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.spyglass button{
+    opacity: 0;
+    width: 25%;
+    margin-left: 35%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background-color: rgba(199, 28, 28, 0.8);
+    padding: .5rem .5rem;
+    border-radius: .5rem;
+    text-align: center;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    animation: fadeIn 2s forwards .5s;
+    transition: background-color 0.3s; /* fixed typo */
+}
+
+.spyglass button:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Desktop styles */
+@media (min-width: 767px) {
+    .bioBody {
+        font-size: 36px;
+        width: 80%;  /* Width for desktop */
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto; /* Center the block on large screens */
+    }
+    .content {
+        padding-top: 10%; /* Adjust as needed to position the content on desktop */
+        margin-left: 8%;
+    }
+
+    .backbutton button {
+        margin-top: 2%;
+        background-color: rgba(199, 28, 28, 0.8);
+        width: 15%;
+        padding: .5em 1em;
+        border-radius: 5px;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s; /* fixed typo */
+    }
+
+    .spyglass button {
+        margin-left: 40%;
+    }
+
+
+}

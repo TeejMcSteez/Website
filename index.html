@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <video playsinline autoplay muted loop id="bgvid">
+        <source src="dexvid.mp4" type="video/mp4">
+    </video>
+    
+    <!-- Header Section -->
+    <div class="header-section">
+        <span class="website-name">Tommy Halls Personal Website</span>
+        <div class="button-container">
+            <!-- Hamburger Menu -->
+            <div id="menu-toggle" class="menu-icon">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div class="top-buttons">
+                <div class="social-links">
+                    <a href="bio.html">Bio</a>
+                    <a href="links.html">"Link Tree"</a>
+                    <a href="forFun.html">For Fun</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup buttons -->
+    <div class="popup-buttons">
+        <a href="bio.html"><button>Bio</button></a>
+        <a href="links.html"><button>"Link Tree"</button></a>
+        <a href="forFun.html"><button>For Fun</button></a>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const popupButtons = document.querySelector('.popup-buttons');
+
+        menuToggle.addEventListener('click', function() {
+            const isHidden = getComputedStyle(popupButtons).display === 'none';
+            popupButtons.style.display = isHidden ? 'block' : 'none';
+        });
+    </script>
+</body>
+</html>
+
+<!-- This website was coded by me using VSCode and LiveServer for testing, Hosted by NameCheap. -->
+<!-- Watch something -> https://www.youtube.com/watch?v=dQw4w9WgXcQ -->
