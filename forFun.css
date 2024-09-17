@@ -13,7 +13,7 @@ body {
     padding: 0;
     height: 100%;
     width: 100%;
-    background-color: #000; /* Use hexadecimal for consistency */
+    background-color: #111; /* Use hexadecimal for consistency */
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -21,17 +21,6 @@ body {
     justify-content: center;
     text-align: center;
     animation: fadeIn 1s ease;
-}
-
-.videoBackground {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    z-index: -1;
-    overflow: hidden;
 }
 
 .content {
@@ -44,7 +33,7 @@ header {
     background-color: #000;
     padding-top: 10px;
     padding-bottom: 10px;
-    border-radius: 2px;
+    border-radius: 10px;
     width: 100%;
 }
 
@@ -121,7 +110,7 @@ footer {
     transition: background-color 0.3s;
     padding: 1em 2em;
     border-radius: 5px;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 @keyframes rotation {
     0% {
@@ -136,33 +125,5 @@ footer {
     }
     50% {
         opacity: 0;
-    }
-}
-
-.divider {
-    background-color: #000;
-    margin-top: 20px;
-    border-radius: 10px;
-    padding: 1px 5px;
-}
-
-.extraContent {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    margin-top: 10px;
-}
-
-.extraContent video {
-    margin: 10px;
-}
-
-@media (max-width: 768px) {
-    .extraContent {
-        height: 50%;
-        width: 100%;
     }
 }
