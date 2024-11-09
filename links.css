@@ -2,7 +2,7 @@ body, html {
     margin: 0;
     padding: 0;
     background-color: #111; /* Dark background for contrast */
-    font-family: Futura Std Condensed Light; /* Adding a clean, modern font */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 @keyframes fadeIn {

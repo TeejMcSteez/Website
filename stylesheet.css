@@ -1,174 +1,117 @@
+/* Fade-in animation for elements */
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 body {
-    font-family: Futura Std Condensed Light;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    height: 100%;
+    width: 100%;
+    /* Cite: https://cssgradient.io/gradient-backgrounds/ */
+    background: #bdc3c7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    overflow-x: hidden;
+}
+
+.buttonSection {
+    display: flex;
+    flex-direction: row;
+    margin: 1%;
+    animation: fadeInAnimation 3s ease 1 both;
+}
+
+.links {
+    margin-left: auto;
     background-color: black;
-}
-
-#bgvid {
-    position: fixed;
-    top: 0;
-    left: 0;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    rotate: -360deg;
-    height: auto;
-    z-index: -1;
-}
-
-.header-section {
-    display: flex;
-    flex-wrap: wrap; /* Allow the content to wrap if needed */
-    justify-content: flex-start;
-    align-items: center;
-    padding: 10px 10px;
-    margin-right: auto;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: #fff;
-}
-
-.website-name {
-    margin-left: 3px;
-    font-size: x-large;
-    font-weight: bold;
-}
-
-.button-container {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-left: 10%;
-}
-
-.top-buttons {
-    display: flex;
-    align-items: center;  /* Vertically center the buttons and links */
-    margin-top: 0;  /* Space between website name and buttons */
-}
-
-.top-buttons button {
-    margin-bottom: 5px;
-    margin-left: 10px;
-    padding: 15px 15px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.top-buttons button:hover {
-    background-color: rgba(199, 28, 28, 0.8);
-}
-
-.social-links {
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-}
-
-.social-links a {
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 1em;
-    border-radius: 5px;
-    margin-left: 10px;
-    margin-bottom: 5px;
-    color: #fff;
     text-align: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-right: 5%;
+    padding: 20px 30px;
+}
+/*Changes the default link in html to regular and changes color to white*/
+a {
+    color: white;
     text-decoration: none;
-    transition: background-color 0.3s;
 }
 
-.social-links a:hover {
-    background-color: #FF0000;
+.links:hover, .link:hover  {
+    background-color: red;
+    transform: translateY(-4px);
 }
 
-/* Hamburger Menu */
-.menu-icon .bar {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    background-color: #fff;
+.title {
+    font-size: 25px;
 }
 
-@media (max-width: 767px) {
-    /* Mobile specific styles: */
-    html {
-        height: 100%;
-        width: 100%;
-    }
-    .header-section {
-        flex-direction: column;  
-        text-align: center;
-        padding: 15px;
-        width: 100%;
-    }
-    .top-buttons {
+.content {
+    font-size: medium;
+    display: flex;
+    flex-direction: row;
+    margin: 5% 5% 5% 5%;
+    animation: fadeInAnimation 3s ease 1 backwards;
+}
+
+.images {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5% 5% 5% 5%;
+    margin: 1% 5%;
+    margin-left: 20%;
+}
+
+.sideImages {
+    display: flex;
+    flex: row;
+}
+
+.me {
+    height: 50%;
+    width: 50%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    margin-left: 5%;
+    /* Padding added to .me and not .pc bc its on top */
+    padding-bottom: 5px; 
+    animation: fadeInAnimation 12s ease 1 forwards;
+
+}
+
+.pc {
+    height: 50%;
+    width: 50%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    margin-left: 5%;
+    animation: fadeInAnimation 18s ease 1 forwards;
+
+}
+
+.gist, table, .gist-meta, .gist-file{
+   
+    padding-right:5%;
+    animation: fadeInAnimation 16s ease 1 forwards;
+}
+
+@media (max-width: 900px) {
+    /* If on mobile removes the table from GitHub for sizing ease */
+    .gist table{
         display: none;
     }
-    #menu-toggle {
-        display: block;
-        cursor: pointer;
-        margin-right: 100%;
-    }
-
-    .social-links {
-        display: flex;
-        margin-top: 10px;  
-        flex-direction: column;
-        align-items: center;  
-        justify-content: center;
-    }
-}
-
-@media (min-width: 768px) {
-    #menu-toggle {
-        display: none; /* Hides the hamburger menu on desktop */
-    }
-}
-.active-menu .popup-buttons {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    opacity: 1;
-}
-.active-menu .menu-icon .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-}
-
-.active-menu .menu-icon .bar:nth-child(2) {
-    opacity: 0;
-}
-
-.active-menu .menu-icon .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-}
-/*When the pop-up buttons are active*/
-.popup-buttons {
-    display: none;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 20px;
+    .gist-meta {
+    animation: fadeInAnimation 20s ease 1 forwards;
     border-radius: 10px;
-    z-index: 100;
-}
+    }
 
-button {
-    background-color: rgba(199, 28, 28, 0.8);
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    transition: 0.3s;
-    padding: 1em 2em;
-    border-radius: 10px;
-    margin: 10px 10px;
+
 }

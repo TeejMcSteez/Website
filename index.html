@@ -3,52 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
     <link rel="stylesheet" href="stylesheet.css">
+    <title>Tommy Halls Personal Website</title>
 </head>
 <body>
-    <video playsinline autoplay muted loop id="bgvid">
-        <source src="dexvid.mp4" type="video/mp4">
-    </video>
-    
-    <!-- Header Section -->
-    <div class="header-section">
-        <span class="website-name">Tommy Halls Personal Website</span>
-        <div class="button-container">
-            <!-- Hamburger Menu -->
-            <div id="menu-toggle" class="menu-icon">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <div class="top-buttons">
-                <div class="social-links">
-                    <a href="bio.html">Bio</a>
-                    <a href="links.html">"Link Tree"</a>
-                    <a href="forFun.html">For Fun</a>
-                </div>
-            </div>
+    <div class="header">
+        <div class="buttonSection">
+            <h1 class="title">Tommy Halls Website</h1>
+            <div class="links"><a class = "link"href="links.html">Contact</a></div>
         </div>
     </div>
 
-    <!-- Popup buttons -->
-    <div class="popup-buttons">
-        <a href="bio.html"><button>Bio</button></a>
-        <a href="links.html"><button>"Link Tree"</button></a>
-        <a href="forFun.html"><button>For Fun</button></a>
+
+
+    <div class="content">
+        <h2 class="greeting">Hello! Welcome to my website my names Tommy (but call me TJ) 
+            and I am a student at The University of North Carolina at Charlotte.
+            I Major in Computer Science with a focus to be determined officially after my first transfer semmester there.
+            Below is a picture of me and the desktop I built as well as the last cool code I've written/learned.</h2>
     </div>
 
-    <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const popupButtons = document.querySelector('.popup-buttons');
+    <div class="images">
+        <script src="https://gist.github.com/TeejMcSteez/3fae4d7ad7f9b31afc40573712d5cbc9.js"></script>
+        <div class="sideImgs">
+            <img class = "me" src="me.JPG" alt="me">
+            <img class = "pc" src="pc.jpg" alt="PC">
+        </div>
+    </div>
 
-        menuToggle.addEventListener('click', function() {
-            const isHidden = getComputedStyle(popupButtons).display === 'none';
-            popupButtons.style.display = isHidden ? 'block' : 'none';
-        });
-    </script>
 </body>
 </html>
-
-<!-- This website was coded by me using VSCode and LiveServer for testing, Hosted by NameCheap. -->
-<!-- Watch something -> https://www.youtube.com/watch?v=dQw4w9WgXcQ -->
