@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./tailwind.css">
+    <title>Teej McSteez's Personal Website</title>
+</head>
+<body class="bg-[url('/imgs/particleBackground.webp')] bg-no-repeat bg-cover min-h-screen min-w-screen">
+    <div id="headerSection" class="flex flex-row justify-between items-center p-3 m-2 ">
+        <h1 class="text-3xl font-bold text-white">Tommy Halls Website</h1>
+        <nav>
+            <a href="./contact.html" class="text-white hover:bg-slate-500 bg-red-800 border-red-800 rounded-xl p-2 m-3">Contact</a>
+        </nav>
+    </div>
+
+    <div id="line" class="m-px p-px bg-red-800 min-w-screen"></div>
+
+    <div id="container" class="items-center justify-center place-items-center space-y-52">
+        <div id="writerContainter" class="flex flex-col items-center justify-center min-h-50 p-1.5 ">
+            <h1 id="typewriterAboutme" class="text-4xl text-center text-white"></h1>
+        </div>
+        <div id="workingSection" class="flex flex-row place-items-center items-end justify-center h-50 w-50 p-2 m-2">
+            <div id="gist" class="hidden lg:block">
+                <script src="https://gist.github.com/TeejMcSteez/c41fbd58b7bc7efa8762d95ec42924c0.js"></script>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
