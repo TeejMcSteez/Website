@@ -600,6 +600,10 @@ video {
   margin: 1px;
 }
 
+.mt-32 {
+  margin-top: 8rem;
+}
+
 .mt-52 {
   margin-top: 13rem;
 }
@@ -644,10 +648,10 @@ video {
   justify-content: space-between;
 }
 
-.space-y-52 > :not([hidden]) ~ :not([hidden]) {
+.space-y-36 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
-  margin-top: calc(13rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(13rem * var(--tw-space-y-reverse));
+  margin-top: calc(9rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(9rem * var(--tw-space-y-reverse));
 }
 
 .rounded-xl {
