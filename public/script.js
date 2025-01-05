@@ -59,6 +59,29 @@ function final() {
         
 }
 
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
+    const imageItems = document.querySelectorAll('.working-item');
+    const totalItems = imageItems.length;
+    let currentIndex = 0;
+
+    function updateDisplay() {
+        imageItems.forEach((img, index) => {
+            if (index === currentIndex) {
+                img.classList.remove('hidden');
+            } else {
+                img.classList.add('hidden');
+            }
+        });
+    }
+
+    document.getElementById("next").addEventListener('click', () => {
+        currentIndex = (currentIndex + 1 + totalItems) % totalItems;
+        updateDisplay();
+    });
+
+    updateDisplay();
     typeText();
 });
