@@ -21,32 +21,37 @@
 
     <div id="line" class="m-px p-px bg-red-800 min-w-screen"></div>
 
-    <div id="container" class="container mx-auto">
-        <div id="writerContainter" class="flex flex-col items-center justify-center min-h-50 p-1.5 mt-32">
-            <h1 id="typewriterAboutme" class="text-4xl text-center text-white space-y-20"></h1>
+    <div id="container" class="container mx-auto px-2">
+        <div id="writerContainter" class="flex flex-col items-center justify-center min-h-screen p-4 mt-32">
+            <h1 id="typewriterAboutme" class="text-4xl text-center text-white space-y-5"></h1>
         </div>
-
-        <div id="workingSection" class="place-items-center items-end justify-center p-6 mt-6">
-            <!-- <div class="working-item hidden w-11/12 sm:w-1/2 md:w-3/4">
-                <script src="https://gist.github.com/TeejMcSteez/c41fbd58b7bc7efa8762d95ec42924c0.js"></script>
-            </div> -->
-            <div class="working-item hidden w-11/12 sm:w-1/2 md:w-3/4">
-            <img src="./imgs/showoff/distanceDoorSesnsor.png" alt="Door Sensor Project" id="image1" class="rounded-xl">
-                <p class="text-center text-white mt-2"><a href="https://github.com/TeejMcSteez/ESPProj">ESP32 Door Sensor</a></p>
+    
+        <div id="workingSection" class="grid grid-cols-1 place-items-center items-center justify-center p-6 mt-8">
+            <div class="working-item hidden w-11/12 sm:w-3/4 md:w-3/4 lg:w-3/4">
+                <img src="./imgs/showoff/distanceDoorSesnsor.png" alt="Door Sensor Project" id="image1" class="rounded-xl w-full">
+                <p class="text-center text-white mt-2">
+                    <a href="https://github.com/TeejMcSteez/ESPProj">ESP32 Door Sensor</a>
+                </p>
             </div>
-            <div class="working-item hidden w-11/12 sm:w-1/2 md:w-3/4">
-                <img src="./imgs/showoff/exampleSRSM.png" alt="SRSM Home Page" id="image2" class="rounded-xl">
-                <p class="text-center text-white mt-2"><a href="https://github.com/TeejMcSteez/SRSM">Secure Remote System Monitor</a></p>
+            <div class="working-item hidden w-11/12 sm:w-3/4 md:w-3/4 lg:w-3/4">
+                <img src="./imgs/showoff/exampleSRSM.png" alt="SRSM Home Page" id="image2" class="rounded-xl w-full">
+                <p class="text-center text-white mt-2">
+                    <a href="https://github.com/TeejMcSteez/SRSM">Secure Remote System Monitor</a>
+                </p>
             </div>
-            <div class="working-item hidden w-11/12 sm:w-1/2 md:w-3/4">
-                <img src="./imgs/showoff/loginSuccesfful.png" alt="SRSM Login Page" id="image3" class="rounded-xl">
-                <p class="text-center text-white mt-2"><a href="https://github.com/TeejMcSteez/SRSM">Secure Remote System Monitor Login Page</a></p>
+            <div class="working-item hidden w-11/12 sm:w-3/4 md:w-3/4 lg:w-3/4">
+                <img src="./imgs/showoff/loginSuccesfful.png" alt="SRSM Login Page" id="image3" class="rounded-xl w-full">
+                <p class="text-center text-white mt-2">
+                    <a href="https://github.com/TeejMcSteez/SRSM">Secure Remote System Monitor Login Page</a>
+                </p>
             </div>
-            <button id="next" class="text-white hover:bg-slate-500 bg-red-800 border-red-800 rounded-xl p-2 pl-4 pr-4 m-4 items-center justify-center place-items-center">Next</button>
+    
+            <button id="next" class="text-white hover:bg-slate-500 bg-red-800 border-red-800 rounded-xl p-2 pl-4 pr-4 m-4 flex items-center justify-center">
+                Next
+            </button>
         </div>
-
     </div>
-
+    
     <script src="./script.js"></script>
 </body>
 </html>
