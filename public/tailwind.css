@@ -596,8 +596,17 @@ video {
   margin: 0.75rem;
 }
 
+.m-4 {
+  margin: 1rem;
+}
+
 .m-px {
   margin: 1px;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mt-2 {
@@ -736,6 +745,14 @@ video {
 
 .p-px {
   padding: 1px;
+}
+
+.pl-4 {
+  padding-left: 1rem;
+}
+
+.pr-4 {
+  padding-right: 1rem;
 }
 
 .text-center {
