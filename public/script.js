@@ -3,7 +3,7 @@ const typewrite = ["Hello my name is Tommy Hall!",
     "I am currently a student at UNCC Charlotte focusing on a Bachelors in Computer Science.",
     "Aside from school I enjoy working on my own personal software projects and tinkering with hardware that I find fascinating."
 ];
-const typingSpeed = 50; // in MS
+const typingSpeed = 15; // in MS
 const erasingSpeed = 25;
 const delayBetweenTexts = 1250; // Delay between typing and erasing
 
@@ -76,58 +76,74 @@ window.addEventListener('resize', () => {
   canvas.height = window.innerHeight;
 });
 
-// Array to hold the shapes
+// Array to hold the shapes (particles)
 const shapes = [];
+const originX = canvas.width / 2;
+const originY = canvas.height / 2 + 350;
+const slowdownStartTime = 3000; // Time in milliseconds after which to start slowing down
 
-// Generate random shapes
-const numShapes = 22; // Number of shapes to generate
+// Generate random shapes (particles)
+const numShapes = 22;
 for (let i = 0; i < numShapes; i++) {
   shapes.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    size: Math.random() * 40 + 20, // Random size between 20 and 60
-    speedX: Math.random() * 0.5 - 0.25, // Random horizontal speed (-0.25 to 0.25)
-    speedY: Math.random() * 0.5 - 0.25, // Random vertical speed (-0.25 to 0.25)
-    sides: Math.floor(Math.random() * 7) + 2, // Random number of sides (1 to 4)
-    color: `hsl(${Math.random() * 20}, 50%, 70%)`, // Random color
+    angle: Math.random() * Math.PI * 2, // Random initial angle
+    radius: Math.random() * 500 + 100, // Random initial radius
+    size: Math.random() * 20 + 5, // Random radius between 5 and 25
+    speedAngle: Math.random() * 0.05 + 0.01, // Random angular speed
+    speedRadius: Math.random() * 2 - 1, // Random radial speed (-1 to 1)
+    slowdownRate: 0.989999, // Slowdown rate (close to 1 for gradual slowdown)
+    color: `hsl(${Math.random() * 360}, 50%, 70%)`,
+    isSlowingDown: false, // Flag to indicate whether slowing down has started
   });
+
+  // Start slowing down each shape after a specified time
+  setTimeout(() => {
+    shapes[i].isSlowingDown = true;
+  }, slowdownStartTime);
 }
 
-// Function to draw a polygon
-function drawShape(x, y, size, sides, color) {
-  const angle = (Math.PI * 2) / sides;
+// Function to draw a circle (particle)
+function drawCircle(x, y, radius, color) {
   ctx.beginPath();
-  ctx.moveTo(x + size * Math.cos(0), y + size * Math.sin(0));
-
-  for (let i = 1; i <= sides; i++) {
-    ctx.lineTo(x + size * Math.cos(i * angle), y + size * Math.sin(i * angle));
-  }
-
+  ctx.arc(x, y, radius, 0, 2 * Math.PI);
   ctx.fillStyle = color;
   ctx.fill();
 }
 
-// Function to update and draw all shapes
+// Function to update and draw all shapes (particles)
 function animateShapes() {
   ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
 
   shapes.forEach(shape => {
-    // Update shape position
-    shape.x += shape.speedX;
-    shape.y += shape.speedY;
+    if (shape.isSlowingDown) {
+      // Gradually slow down the angular and radial speeds
+      shape.speedAngle *= shape.slowdownRate;
+      shape.speedRadius *= shape.slowdownRate;
 
-    // Wrap around edges
-    if (shape.x > canvas.width) shape.x = 0;
-    if (shape.x < 0) shape.x = canvas.width;
-    if (shape.y > canvas.height) shape.y = 0;
-    if (shape.y < 0) shape.y = canvas.height;
+      // Stop reducing speed when it's near zero to avoid jitter
+      if (Math.abs(shape.speedAngle) < 0.001) shape.speedAngle = 0;
+      if (Math.abs(shape.speedRadius) < 0.001) shape.speedRadius = 0;
+    }
 
-    // Draw the shape
-    drawShape(shape.x, shape.y, shape.size, shape.sides, shape.color);
+    // Update angle for circular motion
+    shape.angle += shape.speedAngle;
+
+    // Update radius for inward/outward motion
+    shape.radius += shape.speedRadius;
+
+    // Convert polar coordinates to Cartesian coordinates
+    const x = originX + shape.radius * Math.cos(shape.angle);
+    const y = originY + shape.radius * Math.sin(shape.angle);
+
+    // Draw the circle (particle)
+    drawCircle(x, y, shape.size, shape.color);
   });
 
   requestAnimationFrame(animateShapes); // Request the next frame
 }
+
+// Start the animation
+animateShapes();
 
 
 
