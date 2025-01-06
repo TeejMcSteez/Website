@@ -621,12 +621,12 @@ video {
   margin-top: 0.5rem;
 }
 
-.mt-4 {
-  margin-top: 1rem;
+.mt-32 {
+  margin-top: 8rem;
 }
 
-.mt-52 {
-  margin-top: 13rem;
+.mt-4 {
+  margin-top: 1rem;
 }
 
 .flex {
@@ -645,16 +645,24 @@ video {
   min-height: 20rem;
 }
 
-.min-h-screen {
-  min-height: 100vh;
+.min-h-full {
+  min-height: 100%;
 }
 
 .w-11\/12 {
   width: 91.666667%;
 }
 
+.w-24 {
+  width: 6rem;
+}
+
 .w-full {
   width: 100%;
+}
+
+.min-w-full {
+  min-width: 100%;
 }
 
 .resize {
