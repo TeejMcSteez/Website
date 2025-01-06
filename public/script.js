@@ -14,6 +14,11 @@ let charIndex = 0;
 let count = 0;
 const typeWriterElement = document.getElementById("typewriterAboutme");
 
+const svgs = document.querySelectorAll('#floating-svg svg');
+const svg = document.getElementById('floating-svg');
+const width = window.innerWidth;
+const height = window.innerHeight;
+
 function typeText() {
     if (charIndex < typewrite[textIndex].length) {
         // Add the next character to the element
@@ -60,9 +65,13 @@ function final() {
 }
 
 
+function animateSVG() {
+     svgs.forEach((pic, index) => {
+        pic.style.transform = `translate(${Math.random() * width}px, ${Math.random() * height}px) scale(${Math.random() * 0.5 + 0.5})`; 
+    });
+}
 
-
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {    
     const imageItems = document.querySelectorAll('.working-item');
     const totalItems = imageItems.length;
     let currentIndex = 0;
@@ -81,6 +90,8 @@ document.addEventListener("DOMContentLoaded", () => {
         currentIndex = (currentIndex + 1 + totalItems) % totalItems;
         updateDisplay();
     });
+    animateSVG();
+    setInterval(animateSVG, 30000);
 
     updateDisplay();
     typeText();
