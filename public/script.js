@@ -14,8 +14,6 @@ let charIndex = 0;
 let count = 0;
 const typeWriterElement = document.getElementById("typewriterAboutme");
 
-const svgs = document.querySelectorAll('#floating-svg svg');
-const svg = document.getElementById('floating-svg');
 const width = window.innerWidth;
 const height = window.innerHeight;
 
@@ -64,12 +62,75 @@ function final() {
         
 }
 
+// Get the canvas and its context
+const canvas = document.getElementById('background-canvas');
+const ctx = canvas.getContext('2d');
 
-function animateSVG() {
-     svgs.forEach((pic, index) => {
-        pic.style.transform = `translate(${Math.random() * width}px, ${Math.random() * height}px) scale(${Math.random() * 0.5 + 0.5})`; 
-    });
+// Set canvas size to fill the screen
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// Resize canvas when window size changes
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+// Array to hold the shapes
+const shapes = [];
+
+// Generate random shapes
+const numShapes = 30; // Number of shapes to generate
+for (let i = 0; i < numShapes; i++) {
+  shapes.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: Math.random() * 40 + 20, // Random size between 20 and 60
+    speedX: Math.random() * 0.5 - 0.25, // Random horizontal speed (-0.25 to 0.25)
+    speedY: Math.random() * 0.5 - 0.25, // Random vertical speed (-0.25 to 0.25)
+    sides: Math.floor(Math.random() * 6) + 3, // Random number of sides (3 to 8)
+    color: `hsl(${Math.random() * 0}, 50%, 70%)`, // Random color
+  });
 }
+
+// Function to draw a polygon
+function drawPolygon(x, y, size, sides, color) {
+  const angle = (Math.PI * 2) / sides;
+  ctx.beginPath();
+  ctx.moveTo(x + size * Math.cos(0), y + size * Math.sin(0));
+
+  for (let i = 1; i <= sides; i++) {
+    ctx.lineTo(x + size * Math.cos(i * angle), y + size * Math.sin(i * angle));
+  }
+
+  ctx.fillStyle = color;
+  ctx.fill();
+}
+
+// Function to update and draw all shapes
+function animateShapes() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+
+  shapes.forEach(shape => {
+    // Update shape position
+    shape.x += shape.speedX;
+    shape.y += shape.speedY;
+
+    // Wrap around edges
+    if (shape.x > canvas.width) shape.x = 0;
+    if (shape.x < 0) shape.x = canvas.width;
+    if (shape.y > canvas.height) shape.y = 0;
+    if (shape.y < 0) shape.y = canvas.height;
+
+    // Draw the shape
+    drawPolygon(shape.x, shape.y, shape.size, shape.sides, shape.color);
+  });
+
+  requestAnimationFrame(animateShapes); // Request the next frame
+}
+
+
+
 
 document.addEventListener("DOMContentLoaded", () => {    
     const imageItems = document.querySelectorAll('.working-item');
@@ -90,8 +151,9 @@ document.addEventListener("DOMContentLoaded", () => {
         currentIndex = (currentIndex + 1 + totalItems) % totalItems;
         updateDisplay();
     });
-    animateSVG();
-    setInterval(animateSVG, 30000);
+
+    // Start the animation
+    animateShapes();
 
     updateDisplay();
     typeText();
