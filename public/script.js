@@ -80,7 +80,7 @@ window.addEventListener('resize', () => {
 const shapes = [];
 
 // Generate random shapes
-const numShapes = 30; // Number of shapes to generate
+const numShapes = 22; // Number of shapes to generate
 for (let i = 0; i < numShapes; i++) {
   shapes.push({
     x: Math.random() * canvas.width,
@@ -88,13 +88,13 @@ for (let i = 0; i < numShapes; i++) {
     size: Math.random() * 40 + 20, // Random size between 20 and 60
     speedX: Math.random() * 0.5 - 0.25, // Random horizontal speed (-0.25 to 0.25)
     speedY: Math.random() * 0.5 - 0.25, // Random vertical speed (-0.25 to 0.25)
-    sides: Math.floor(Math.random() * 6) + 3, // Random number of sides (3 to 8)
-    color: `hsl(${Math.random() * 0}, 50%, 70%)`, // Random color
+    sides: Math.floor(Math.random() * 7) + 2, // Random number of sides (1 to 4)
+    color: `hsl(${Math.random() * 20}, 50%, 70%)`, // Random color
   });
 }
 
 // Function to draw a polygon
-function drawPolygon(x, y, size, sides, color) {
+function drawShape(x, y, size, sides, color) {
   const angle = (Math.PI * 2) / sides;
   ctx.beginPath();
   ctx.moveTo(x + size * Math.cos(0), y + size * Math.sin(0));
@@ -123,7 +123,7 @@ function animateShapes() {
     if (shape.y < 0) shape.y = canvas.height;
 
     // Draw the shape
-    drawPolygon(shape.x, shape.y, shape.size, shape.sides, shape.color);
+    drawShape(shape.x, shape.y, shape.size, shape.sides, shape.color);
   });
 
   requestAnimationFrame(animateShapes); // Request the next frame
