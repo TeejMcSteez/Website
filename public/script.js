@@ -7,8 +7,6 @@ const typingSpeed = 15; // in MS
 const erasingSpeed = 25;
 const delayBetweenTexts = 1250; // Delay between typing and erasing
 
-const waitTime = 15000; // 15 seconds before restarting
-
 let textIndex = 0;
 let charIndex = 0;
 let count = 0;
