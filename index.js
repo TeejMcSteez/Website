@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require('express'); // DOC: https://expressjs.com/en/4x/api.html
 const path = require('path');
 const app = express();
 const helmet = require('helmet');
@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 8000;
 
 app.use(helmet());
 app.disable('x-powered-by');
+app.enable('trust proxy');
 
 app.use(express.static(path.join(__dirname, "/public")));
 
@@ -16,6 +17,11 @@ app.get('/', (req, res) => {
 });
 
 app.use((req, res, next) => {
+  if (rec.secure) {
+    next();
+  } else {
+    res.redirect('https://'+req.host+req.url);
+  }
   res.status(400).send("Sorry can't find that! Stop looking so hard . . .");
 });
 

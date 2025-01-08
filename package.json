@@ -1,0 +1,29 @@
+{
+  "name": "teejs-website",
+  "version": "2.0.1",
+  "description": "Started with plain HTML/CSS and JS now has an actual stack using [Node](https://nodejs.org/en) for the server and [Tailwindcss](https://tailwindcss.com/) for the styles.\r --- \r Still under construction but stays live so people can see (and I get my moneys worth out of paying for this server)",
+  "keywords": [],
+  "homepage": "https://github.com/TeejMcSteez/Website#readme",
+  "bugs": {
+    "url": "https://github.com/TeejMcSteez/Website/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TeejMcSteez/Website.git"
+  },
+  "license": "ISC",
+  "author": "TeejMcSteez",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx tailwindcss -i ./public/stylesheet.css -o ./public/tailwind.css && node index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "path": "^0.12.7",
+    "pino": "^9.6.0",
+    "tailwindcss": "^3.4.17"
+  },
+  "devDependencies": {}
+}
