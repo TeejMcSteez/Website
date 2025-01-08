@@ -1,8 +1,8 @@
 const express = require('express'); // DOC: https://expressjs.com/en/4x/api.html
 const path = require('path');
 const app = express();
-const helmet = require('helmet');
-const logger = require('pino');
+const helmet = require('helmet'); // DOC: https://helmetjs.github.io/
+const logger = require('pino'); // REPO: https://github.com/pinojs/pino
 
 const PORT = process.env.PORT || 8000;
 
@@ -10,7 +10,7 @@ app.use(helmet());
 app.disable('x-powered-by');
 app.enable('trust proxy');
 
-app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.static(path.join(__dirname, "/public") ) );
 
 app.get('/', (req, res) => {
   res.sendFile( __dirname + '/public/index.html');
