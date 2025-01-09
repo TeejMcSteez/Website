@@ -11,7 +11,6 @@
 </head>
 <body class="bg-zinc-800 bg-no-repeat bg-cover min-h-screen min-w-screen font-serif">
 
-
     <canvas id="background-canvas" class="h-full w-full absolute z-[-1]"></canvas>
 
     <div id="headerSection" class=" bg-black flex flex-row justify-between items-center p-8">
@@ -31,19 +30,19 @@
         </div>
         <div id="workingSection" class="grid grid-cols-1 place-items-center items-center justify-center p-2 mt-4">
             <div class="working-item hidden w-11/12 sm:w-3/4 md:w-3/4 lg:w-3/4">
-                <img src="./imgs/showoff/distanceDoorSesnsor.png" alt="Door Sensor Project" id="image1" class="rounded-xl w-full">
+                <img src="./imgs/showoff/distanceDoorSesnsor.png" loading="lazy" alt="Door Sensor Project" id="image1" class="rounded-xl w-full">
                 <p class="text-center text-white mt-2">
                     <a href="https://github.com/TeejMcSteez/ESPProj" target="_blank">ESP32 Door Sensor</a>
                 </p>
             </div>
             <div class="working-item hidden w-11/12 sm:w-3/4 md:w-3/4 lg:w-3/4">
-                <img src="./imgs/showoff/exampleSRSM.png" alt="SRSM Home Page" id="image2" class="rounded-xl w-full">
+                <img src="./imgs/showoff/exampleSRSM.png" loading="lazy" alt="SRSM Home Page" id="image2" class="rounded-xl w-full">
                 <p class="text-center text-white mt-2">
                     <a href="https://github.com/TeejMcSteez/SRSM" target="_blank">Secure Remote System Monitor</a>
                 </p>
             </div>
             <div class="working-item hidden w-11/12 sm:w-3/4 md:w-3/4 lg:w-3/4">
-                <img src="./imgs/showoff/loginSuccesfful.png" alt="SRSM Login Page" id="image3" class="rounded-xl w-full">
+                <img src="./imgs/showoff/loginSuccesfful.png" loading="lazy" alt="SRSM Login Page" id="image3" class="rounded-xl w-full">
                 <p class="text-center text-white mt-2">
                     <a href="https://github.com/TeejMcSteez/SRSM" target="_blank">Secure Remote System Monitor Login Page</a>
                 </p>
@@ -54,7 +53,10 @@
             </button>
         </div>
     </div>
-    
-    <script src="./script.js"></script>
+    <!-- Defer helps not blocking and can increase load times by 1s!
+    Tries to load the HTML first or in parrallel with the js and then loads the js
+    This allows content to be delivered faster and stops the fight over
+    CPU and memory space between the script and html -->
+    <script src="./script.js" defer></script>
 </body>
 </html>
