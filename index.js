@@ -2,7 +2,7 @@ const express = require('express'); // DOC: https://expressjs.com/en/4x/api.html
 const path = require('path');
 const app = express();
 const helmet = require('helmet'); // DOC: https://helmetjs.github.io/
-const logger = require('pino'); // REPO: https://github.com/pinojs/pino
+const logger = require('pino').pino(); // REPO: https://github.com/pinojs/pino
 
 const PORT = process.env.PORT || 8000;
 
