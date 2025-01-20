@@ -5,7 +5,7 @@ const typewrite = ["Hello my name is Tommy Hall!",
 ];
 const typingSpeed = 15; // in MS
 const erasingSpeed = 25;
-const delayBetweenTexts = 1250; // Delay between typing and erasing
+const delayBetweenTexts = 1500; // Delay between typing and erasing
 
 let textIndex = 0;
 let charIndex = 0;

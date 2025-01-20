@@ -16,14 +16,17 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "start": "npx tailwindcss -i ./public/stylesheet.css -o ./public/tailwind.css && node index.js"
+    "start": "npx tailwindcss -i ./public/stylesheet.css -o ./public/tailwind.css && tsc && node index.js"
   },
   "dependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.7",
     "express": "^4.21.2",
     "helmet": "^8.0.0",
     "path": "^0.12.7",
     "pino": "^9.6.0",
-    "tailwindcss": "^3.4.17"
-  },
-  "devDependencies": {}
+    "tailwindcss": "^3.4.17",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
 }
