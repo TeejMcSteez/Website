@@ -23,3 +23,6 @@ document.getElementById('upload').addEventListener('submit', function(e) {
         alert('No file selected');
     }
 });
+document.getElementById('list').addEventListener('click', function() {
+    window.location.href = '/list.html';
+});
