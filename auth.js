@@ -10,6 +10,7 @@ passport.use(new GoogleStrategy({
   clientID: jsonCreds.web.client_id,
   clientSecret: jsonCreds.web.client_secret,
   callbackURL: 'https://teejmcsteez.tech/auth/google/callback'
+  // callbackURL: 'http://localhost:8000/auth/google/callback'
 }, (accessToken, refreshToken, profile, done) => {
   // Here you can save the profile information to your database if needed
   return done(null, profile);

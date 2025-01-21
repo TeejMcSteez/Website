@@ -1,6 +1,6 @@
 {
   "name": "teejs-website",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "Started with plain HTML/CSS and JS now has an actual stack using [Node](https://nodejs.org/en) for the server and [Tailwindcss](https://tailwindcss.com/) for the styles.\r --- \r Still under construction but stays live so people can see (and I get my moneys worth out of paying for this server)",
   "keywords": [],
   "homepage": "https://github.com/TeejMcSteez/Website#readme",
