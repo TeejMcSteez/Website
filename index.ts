@@ -1,4 +1,11 @@
 import { NextFunction, Request, Response } from "express";
+import bodyParser from 'body-parser';
+import OpenAI from 'openai';
+
+const dotenv = require('dotenv');
+
+// Load environment variables from .env file
+dotenv.config();
 
 const express = require('express'); // DOC: https://expressjs.com/en/4x/api.html
 const path = require('node:path');
@@ -9,6 +16,11 @@ const multer = require('multer'); // DOC: https://www.npmjs.com/package/multer
 const fs = require('node:fs');
 const session = require('express-session'); // DOC: https://www.npmjs.com/package/express-session
 const passport = require('./auth.js');
+
+// Simplify OpenAI initialization
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI 
+});
 
 const storage = multer.diskStorage({
   destination: (req: Request, file: Express.Multer.File, cb: Function) => {
@@ -37,11 +49,50 @@ app.use(express.static(path.join(__dirname, "/public") ) );
 app.use(session({ secret: sec.web.client_secret, resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(express.json()); // Add this line to parse JSON bodies
+app.use(bodyParser.text()); // Add this line to parse text bodies
+
+/** 
+ * Unprotected Routes
+ */
 
 app.get('/', (req: Request, res: Response) => {
   res.sendFile( __dirname + '/public/index.html');
 });
 
+app.get('/toscheck', (req: Request, res: Response) => {
+  res.sendFile( __dirname + '/public/toscheck.html');
+});
+
+// Update the route handler to properly handle async/await
+app.post('/tosAPI/check', async (req: Request, res: Response) => {
+  try {
+    const result = await parseTOS(req.body.text);
+    res.json({ analysis: result });
+  } catch (error) {
+    console.error('Error processing TOS:', error);
+    res.status(500).json({ error: 'Failed to analyze TOS' });
+  }
+});
+
+async function parseTOS(TOS: String) {
+  try {
+    const completion = await openai.chat.completions.create({
+      model: 'gpt-3.5-turbo',
+      messages: [{
+        role: 'system',
+        content: `Please analyze this TOS for red flags, wierd words, and obfuscated terminology and lastly a summary all in JSON format: ${TOS}`
+      }]
+    });
+    return completion.choices[0].message.content;
+  } catch (error) {
+    throw error;
+  }
+}
+
+/**
+ * Protected Routes, Error and 404 handling, and listening function
+ */
 app.get('/auth/google', passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), (req: Request, res: Response) => {
   res.redirect('/share');
