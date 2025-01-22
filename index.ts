@@ -5,9 +5,9 @@ const path = require('node:path');
 const app = express();
 const helmet = require('helmet'); // DOC: https://helmetjs.github.io/
 const logger = require('pino').pino(); // REPO: https://github.com/pinojs/pino
-const multer = require('multer');
+const multer = require('multer'); // DOC: https://www.npmjs.com/package/multer
 const fs = require('node:fs');
-const session = require('express-session');
+const session = require('express-session'); // DOC: https://www.npmjs.com/package/express-session
 const passport = require('./auth.js');
 
 const storage = multer.diskStorage({
@@ -26,8 +26,8 @@ const upload = multer({ storage: storage});
 
 const PORT = process.env.PORT || 8000;
 
-const sshh = fs.readFileSync(path.join(__dirname, 'conf', 'client_secret_147879745742-bu54ss6r3kbofqlmgbrpa5flen39m3bt.apps.googleusercontent.com.json'));
-const sec = JSON.parse(sshh);
+const secJs = fs.readFileSync(path.join(__dirname, 'conf', 'client_secret_147879745742-bu54ss6r3kbofqlmgbrpa5flen39m3bt.apps.googleusercontent.com.json'));
+const sec = JSON.parse(secJs);
 
 app.use(helmet());
 app.disable('x-powered-by');
