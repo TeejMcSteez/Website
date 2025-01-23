@@ -3,53 +3,25 @@ document.getElementById('submitButton').addEventListener('click', function(e) {
     const input = document.getElementById('tosText');
     const tos = input.value.trim();
     
-    // const tosFile = document.getElementById('tosFile');
-    // const file = tosFile.files[0]; // Changed from file to files
-
-    if (tos) { // Check if either text or file exists
-        if (tos) {
-            fetch('/tosAPI/check', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({ text: tos })
-            })
-            .then(response => response.json())
-            .then(data => {
-                displayResult(data);
-                console.log('Response:', data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        }
-        
-        // if (file) {
-        //     const formData = new FormData();
-        //     formData.append('file', file);
-
-        //     fetch('/tosAPI/checkFile', {
-        //         method: 'POST',
-        //         body: formData
-        //     })
-        //     .then(response => {
-        //         if (response.ok) {
-        //             return response.json();
-        //         }
-        //         throw new Error('Error uploading file');
-        //     })
-        //     .then(data => { 
-        //         displayResult(data);
-        //         tosFile.value = '';
-        //     })
-        //     .catch((error) => {
-        //         console.error('Error:', error);
-        //     });
-        // }
+    if (tos) {
+        fetch('/tosAPI/check', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({ text: tos })
+        })
+        .then(response => response.json())
+        .then(data => {
+            displayResult(data);
+            console.log('Response:', data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
     } else {
-        alert('Please enter some text to check or upload a file');
+        alert('Please enter some text to check');
     }
 });
 

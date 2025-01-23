@@ -74,21 +74,9 @@ app.post('/tosAPI/check', async (req: Request, res: Response) => {
     res.status(500).json({ error: 'Failed to analyze TOS' });
   }
 });
-// TODO if one can send files or stream file information to not exceed limit request
-app.post('/tosAPI/checkFile', upload.single('file'), async (req: Request, res: Response) => {
-  try {
-    if (!req.file) {
-      return res.status(400).json({ error: 'No file uploaded' });
-    }
-    const file = fs.readFileSync(req.file.path, 'utf8');
-    const result = await parseTOS(file);
-    res.json({ analysis: result });
-  } catch (error) {
-    console.error('Error processing TOS:', error);
-    res.status(500).json({ error: 'Failed to analyze TOS' });
-  }
- });
-// Add file parsing in a new function or dynamically decide in this one
+
+// Remove the /tosAPI/checkFile route and parseTOSFile function
+
 async function parseTOS(TOS: string) {
   try {
     const completion = await openai.chat.completions.create({
