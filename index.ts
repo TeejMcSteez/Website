@@ -38,7 +38,7 @@ const upload = multer({ storage: storage});
 
 const PORT = process.env.PORT || 8000;
 
-const secJs = fs.readFileSync(path.join(__dirname, 'conf', 'client_secret_147879745742-bu54ss6r3kbofqlmgbrpa5flen39m3bt.apps.googleusercontent.com.json'));
+const secJs = fs.readFileSync(path.join(__dirname, 'conf', process.env.GOOGLE_PATH));
 const sec = JSON.parse(secJs);
 
 app.use(helmet());
@@ -74,16 +74,36 @@ app.post('/tosAPI/check', async (req: Request, res: Response) => {
     res.status(500).json({ error: 'Failed to analyze TOS' });
   }
 });
-
-async function parseTOS(TOS: String) {
+// TODO if one can send files or stream file information to not exceed limit request
+app.post('/tosAPI/checkFile', upload.single('file'), async (req: Request, res: Response) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ error: 'No file uploaded' });
+    }
+    const file = fs.readFileSync(req.file.path, 'utf8');
+    const result = await parseTOS(file);
+    res.json({ analysis: result });
+  } catch (error) {
+    console.error('Error processing TOS:', error);
+    res.status(500).json({ error: 'Failed to analyze TOS' });
+  }
+ });
+// Add file parsing in a new function or dynamically decide in this one
+async function parseTOS(TOS: string) {
   try {
     const completion = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo',
       messages: [{
         role: 'system',
-        content: `Please analyze this TOS for red flags, wierd words, and obfuscated terminology and lastly a summary all in JSON format: ${TOS}`
-      }]
+        content: 'Analyze this Terms of Service. Return a JSON with red_flags (int), weird_words (array), obfuscated_terms (array), summary (string), and risk_level (string: low|medium|high)'
+      },
+      {
+        role: 'user',
+        content: TOS
+      }],
+      temperature: 0.7
     });
+    
     return completion.choices[0].message.content;
   } catch (error) {
     throw error;
